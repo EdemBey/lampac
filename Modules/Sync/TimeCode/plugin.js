@@ -125,7 +125,8 @@
         var card = activity.movie || activity.card || {
           id: 0
         };
-        var card_id = (card.id || 0) + '_' + (card.name ? 'tv' : 'movie');
+        // Lampa saves the activity with a stripped card ({id, source}): a series is told by its other fields or the activity's method
+        var card_id = (card.id || 0) + '_' + (card.name || card.original_name || card.number_of_seasons || activity.method == 'tv' ? 'tv' : 'movie');
         var uid = unic_id;
         var token = '{token}';
 		
